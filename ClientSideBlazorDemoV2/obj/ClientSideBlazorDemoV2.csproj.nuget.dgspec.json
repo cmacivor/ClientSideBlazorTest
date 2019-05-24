@@ -1,0 +1,79 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\macivoce\\Source\\repos\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\macivoce\\Source\\repos\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\macivoce\\Source\\repos\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2.csproj",
+        "projectName": "ClientSideBlazorDemoV2",
+        "projectPath": "C:\\Users\\macivoce\\Source\\repos\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2.csproj",
+        "packagesPath": "C:\\Users\\macivoce\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\macivoce\\Source\\repos\\ClientSideBlazorDemoV2\\ClientSideBlazorDemoV2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\macivoce\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json": {},
+          "https://dotnet.myget.org/F/blazor-dev/api/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor": {
+              "target": "Package",
+              "version": "[3.0.0-preview5-19227-01, )"
+            },
+            "Microsoft.AspNetCore.Blazor.Build": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0-preview5-19227-01, )"
+            },
+            "Microsoft.AspNetCore.Blazor.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0-preview5-19227-01, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

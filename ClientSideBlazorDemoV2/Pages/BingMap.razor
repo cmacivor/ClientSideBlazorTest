@@ -1,0 +1,83 @@
+@page "/bingmap"
+@inject IJSRuntime JsRuntime;
+@inject BingMapService BingMapService
+
+<h2>Bing address validation demo</h2>
+<label>Client Address:</label>
+<input type="text" class="form-control" onblur="@OpenModal" id="inputClientAddress" placeholder="Search Address"/>
+
+
+<div class="modal fade" id="addressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Address Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+             <div onclick="@CloseModal" style="cursor:pointer" class="alert alert-primary">
+                @RetrievedAddress.addressLine
+             </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<h4>You selected</h4>
+<div class="row">
+   <div class="col-md-6">
+     <div class="form-group">
+       <label><strong>Retrieved Address Line</strong></label>
+       <label>@AddressForDisplay.addressLine</label>
+     </div>
+   </div>
+   <div class="col-md-6">
+     <div class="form-group">
+       <label><strong>Country</strong></label>
+       <label>@AddressForDisplay.countryRegion </label>
+     </div>
+   </div>
+</div>
+
+
+@functions {
+  //not sure, but I think these need to be private
+    private BingServer.Address RetrievedAddress = new BingServer.Address();
+
+    private BingServer.Address AddressForDisplay = new BingServer.Address();
+
+    public async Task<object> OpenModal()
+    {
+
+        //var client = new ServiceReference1.NoneyaWebServiceClient();
+
+        //var environmentUserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToString();
+
+        //var userDetails = await client.GetUserInformationAsync(environmentUserName);
+
+        //first let's call the Bing service
+        var address = await BingMapService.GetAddresses();
+
+        RetrievedAddress = address.resourceSets.FirstOrDefault().resources.FirstOrDefault().address;
+
+        return JsRuntime.InvokeAsync<object>("BingMap.OpenModalOnSearch"); 
+    }
+
+    //Note: whenever running a javascript method, it needs to be async. Not sure if it needs to return a Task<object>, but this is the only way I can get it to work right now.
+    private async Task<object> CloseModal()
+    {
+       //this is apparently all that's required to populate a separate set of fields on the page when this method is invoked. The RetrievedAddress object still has its values
+       AddressForDisplay = RetrievedAddress;
+
+       return  await JsRuntime.InvokeAsync<object>("BingMap.HideModal"); 
+    }
+
+}
